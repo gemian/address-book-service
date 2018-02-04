@@ -70,7 +70,7 @@ int main(int argc, char** argv)
 
     // Set primary store manually to avoid problems when removing stores
     //
-    // Without manually set the primary store folks will try go guess that, and affter adding
+    // Without manually set the primary store folks will try go guess that, and after adding
     // a new store, folks will check if the eds store is  marked as default, and if yes then folks
     // will update the primary store pointer with this new store.
     // But after removing a source if the source is used as the primary by folks,

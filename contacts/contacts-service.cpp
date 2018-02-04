@@ -358,7 +358,7 @@ void GaleraContactsService::fetchContactsPage(QContactFetchRequestData *data)
         return;
     }
 
-    // Load contacs async
+    // Load contacts async
     QDBusPendingCall pcall = data->view()->asyncCall("contactsDetails",
                                                      data->fields(),
                                                      data->offset(),
@@ -956,7 +956,7 @@ void GaleraContactsService::addRequest(QtContacts::QContactAbstractRequest *requ
             break;
 
         default: // unknown request type.
-        break;
+            break;
     }
 }
 

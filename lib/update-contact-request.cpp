@@ -533,7 +533,7 @@ void UpdateContactRequest::updateNote()
     QList<QContactDetail> newDetails = detailsFromPersona(QContactDetail::TypeNote, m_currentPersonaIndex, &prefDetail);
 
     if (m_currentPersona &&
-        FOLKS_IS_EMAIL_DETAILS(m_currentPersona) &&
+        FOLKS_IS_NOTE_DETAILS(m_currentPersona) &&
         !isEqual(originalDetails, originalPref, newDetails, prefDetail)) {
         qDebug() << "notes diff";
         GeeSet *newSet = SET_AFD_NEW();
