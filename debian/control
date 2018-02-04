@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Adam Boardman <adamboardman@gmail.com>
 Build-Depends: cmake (>= 2.8.9),
                dbus-test-runner <!cross>,
+               extra-cmake-modules,
                debhelper (>= 9),
 #               dh-translations,
                gobject-introspection (>= 1.31.0-2~) <!cross>,
