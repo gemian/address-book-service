@@ -928,7 +928,7 @@ void UpdateContactRequest::updateDetailsDone(GObject *detail, GAsyncResult *resu
     case QContactDetail::TypeGender:
     case QContactDetail::TypeGeoLocation:
     case QContactDetail::TypeGlobalPresence:
-    case QContactDetail::TypeHobby:
+    case QContactDetail::TypeHobby: //Not supported by folks
     case QContactDetail::TypeRingtone:
     case QContactDetail::TypeTag:
     case QContactDetail::TypeTimestamp:
