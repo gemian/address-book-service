@@ -1,4 +1,10 @@
-address-book-service (0.1.5+0ubports1) xenial; urgency=medium
+address-book-service (0.1.5+gemian) buster; urgency=medium
+
+  * Latest address-book-service from UBPorts with some patches for use with debian
+
+ -- Adam Boardman <adamboardman@gmail.com>  Sun, 4 Jan 2018 16:45:07 +0000
+
+address-book-service (0.1.5+ubports1) xenial; urgency=medium
 
   * Fix deletion of contacts
     (https://github.com/ubports/ubuntu-touch/issues/864)
