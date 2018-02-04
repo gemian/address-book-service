@@ -36,6 +36,7 @@ include_directories(
 
 target_link_libraries(${QCONTACTS_BACKEND}
     galera-common
+    ${LibPhoneNumber_LIBRARIES}
     Qt5::Core
     Qt5::Contacts
     Qt5::DBus
