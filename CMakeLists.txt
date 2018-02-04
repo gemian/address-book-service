@@ -1,11 +1,15 @@
 project(address-book-service C CXX)
 
 cmake_minimum_required(VERSION 2.8.9)
+
+find_package(ECM REQUIRED NO_MODULE)
+
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
 include(FindPkgConfig)
 # Standard install paths
 include(GNUInstallDirs)
+include(KDEInstallDirs)
 
 find_package(Qt5Core REQUIRED)
 find_package(Qt5DBus REQUIRED)
