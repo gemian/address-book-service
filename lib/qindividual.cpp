@@ -741,6 +741,42 @@ QList<QtContacts::QContactDetail> QIndividual::getPersonaUrls(FolksPersona *pers
     return details;
 }
 
+QList<QtContacts::QContactDetail> QIndividual::getPersonaNotes(FolksPersona *persona,
+                                                               QtContacts::QContactDetail *preferredNote,
+                                                               int index) const
+{
+    if (!FOLKS_IS_NOTE_DETAILS(persona)) {
+        return QList<QtContacts::QContactDetail>();
+    }
+
+    QList<QtContacts::QContactDetail> details;
+    GeeSet *notes = folks_note_details_get_notes(FOLKS_NOTE_DETAILS(persona));
+    if (!notes) {
+        return details;
+    }
+    GeeIterator *iter = gee_iterable_iterator(GEE_ITERABLE(notes));
+    int fieldIndex = 1;
+
+    while(gee_iterator_next(iter)) {
+        FolksAbstractFieldDetails *fd = FOLKS_ABSTRACT_FIELD_DETAILS(gee_iterator_get(iter));
+        const char *note = (const char*) folks_abstract_field_details_get_value(fd);
+
+        QContactNote detail;
+        detail.setNote(qStringFromGChar(note));
+
+        bool isPref = false;
+        DetailContextParser::parseParameters(detail, fd, &isPref);
+        detail.setDetailUri(QString("%1.%2").arg(index).arg(fieldIndex++));
+        if (isPref) {
+            *preferredNote = detail;
+        }
+        g_object_unref(fd);
+        details << detail;
+    }
+    g_object_unref(iter);
+    return details;
+}
+
 QtContacts::QContactDetail QIndividual::getPersonaFavorite(FolksPersona *persona, int index) const
 {
     if (!FOLKS_IS_FAVOURITE_DETAILS(persona)) {
@@ -1005,6 +1041,13 @@ void QIndividual::updateContact(QContact *contact) const
                                 VCardParser::PreferredActionNames[QContactUrl::Type],
                                 prefDetail,
                                 !wPropList.contains("urls"));
+
+        details = getPersonaNotes(persona, &prefDetail, personaIndex);
+        appendDetailsForPersona(contact,
+                                details,
+                                VCardParser::PreferredActionNames[QContactNote::Type],
+                                prefDetail,
+                                !wPropList.contains("notes"));
 
         details = getPersonaExtendedDetails (persona, personaIndex);
         appendDetailsForPersona(contact,
