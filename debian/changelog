@@ -2,7 +2,7 @@ address-book-service (0.1.5+gemian) buster; urgency=medium
 
   * Latest address-book-service from UBPorts with some patches for use with debian
 
- -- Adam Boardman <adamboardman@gmail.com>  Sun, 4 Jan 2018 16:45:07 +0000
+ -- Adam Boardman <adamboardman@gmail.com>  Mon, 2 Nov 2020 16:45:07 +0000
 
 address-book-service (0.1.5+ubports1) xenial; urgency=medium
 
