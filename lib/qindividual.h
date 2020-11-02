@@ -57,7 +57,7 @@ public:
     void flush();
     bool markAsDeleted();
     QDateTime deletedAt();
-    bool setVisible(bool visible);
+    void setVisible(bool visible);
     bool isVisible() const;
 
     static QtContacts::QContact copy(const QtContacts::QContact &c, QList<QtContacts::QContactDetail::DetailType> fields);
